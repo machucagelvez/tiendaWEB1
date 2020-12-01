@@ -9,7 +9,7 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning mb-2">
             <a class="navbar-brand" href="index.html">
                 <img src="img/logo.svg" width="100" height="100" alt="" loading="lazy">
             </a>
@@ -31,14 +31,77 @@
 
     <main>
     
-        <?php
-            include("BaseDatos.php");
-            $transaccion = new BaseDatos;
-            $consultaSQL = "SELECT * FROM producto WHERE 1";
-            $productos = $transaccion->buscarProducto($consultaSQL);
-            print_r($productos);
+      <?php
+        include("BaseDatos.php");
+        $transaccion = new BaseDatos;
+        $consultaSQL = "SELECT * FROM producto WHERE 1";
+        $productos = $transaccion->buscarProducto($consultaSQL);
+        //print_r($productos);
+      ?>
 
-        ?>
+      <?php foreach($productos as $producto): ?>
+
+        <div class="container">
+          
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="<?= $producto["imagen"] ?>" class="card-img" alt="imagenProducto">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><?= $producto["nombre"] ?></h5>
+                    <h5 class="card-title">$<?= $producto["precio"] ?></h5>
+                    <p class="card-text"><?= $producto["descripcion"] ?></p>
+                    <!--<p class="card-text"><small class="text-muted">La Machuca</small></p>-->
+                    <a href="borrarProducto.php?id=<?= $producto["idProducto"] ?>" class="btn btn-danger">Eliminar</a>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar<?= $producto["idProducto"] ?>">Editar</button>
+                    <div class="modal fade" id="editar<?= $producto["idProducto"] ?>" tabindex="-1" aria-labelledby="edicionProducto" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="edicionProducto">Editar Producto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="actualizarProducto.php?id=<?= $producto["idProducto"] ?>" method="POST">
+                              <div class="form-group">
+                              <label>Nombre:</label>
+                                <input type="text" class="form-control" name="editarNombre" value="<?= $producto["nombre"]?>">
+                              </div>
+                              <div class="form-group">
+                              <label>Marca:</label>
+                                <input type="text" class="form-control" name="editarMarca" value="<?= $producto["marca"]?>">
+                              </div>
+                              <div class="form-group">
+                                <label>Precio:</label>
+                                <input type="number" class="form-control" name="editarPrecio" value="<?= $producto["precio"]?>">
+                              </div>
+                              <div class="form-group">
+                                <label>Imagen:</label>
+                                <input type="text" class="form-control" name="editarImagen" value="<?= $producto["imagen"]?>">
+                              </div>
+                              <div class="form-group">
+                                <label>Descripción:</label>
+                                <textarea class="form-control" rows="2" name="editarDescripcion"><?= $producto["descripcion"]?></textarea>
+                              </div>
+                              <button type="submit" class="btn btn-info" name="botonEditar">Guardar</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+        
+
+      <?php endforeach ?>
 
     </main>
 

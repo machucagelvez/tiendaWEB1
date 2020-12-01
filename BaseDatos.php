@@ -38,7 +38,29 @@
             $resultado = $consultaBuscarProducto->execute();
             return $consultaBuscarProducto->fetchAll();
 
-        } 
+        }
+
+        public function eliminarProducto($consultaSQL){
+            $conexionBD = $this->conexion();
+            $consultaEliminarProducto = $conexionBD->prepare($consultaSQL);
+            $resultado = $consultaEliminarProducto->execute();
+            if ($resultado) {
+                echo "Producto eliminado";
+            }else {
+                echo "Error eliminando";
+            }
+        }
+
+        public function actualizarProducto($consultaSQL){
+            $conexionBD = $this->conexion();
+            $consultaActualizarProducto = $conexionBD->prepare($consultaSQL);
+            $resultado = $consultaActualizarProducto->execute();
+            if ($resultado) {
+                echo "Producto actualizado";
+            }else {
+                echo "Error actualizando";
+            }
+        }
     }
 
 ?>
