@@ -4,7 +4,7 @@
     $id = $_GET["id"];
     $transaccion = new BaseDatos();
     $consultaSQL = "DELETE FROM producto WHERE idProducto='$id'";
-    $transaccion->eliminarProducto($consultaSQL);
+    $transaccion->modificarProducto($consultaSQL, "eliminar");
     header("location:edicion.php");
 
 ?>

@@ -10,7 +10,7 @@
         $descripcion = $_POST["editarDescripcion"];
         $transaccion = new BaseDatos();
         $consultaSQL = "UPDATE producto SET nombre='$nombre', marca='$marca', precio=$precio, imagen='$imagen', descripcion='$descripcion' WHERE idProducto='$id'";
-        $transaccion->agregarProducto($consultaSQL);
+        $transaccion->modificarProducto($consultaSQL, "actualizar");
         header("location:edicion.php");
     }
 

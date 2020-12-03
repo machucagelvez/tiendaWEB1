@@ -11,8 +11,8 @@
 
         $transaccion = new BaseDatos();
         $consultaSQL = "INSERT INTO producto(nombre, marca, precio, imagen, descripcion) VALUES ('$nombre', '$marca', '$precio', '$imagen', '$descripcion')";
-        $transaccion->agregarProducto($consultaSQL);
-        header("location:edicion.php");
+        $transaccion->modificarProducto($consultaSQL, "agregar");
+        header("location:index.php");
 
     }  
 

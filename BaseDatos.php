@@ -19,16 +19,27 @@
             }
         }
 
-        public function agregarProducto($consultaSQL){
+        public function modificarProducto($consultaSQL, $tipo){
             $conexionBD = $this->conexion();
-            $consultaAgregarProducto = $conexionBD->prepare($consultaSQL);
-            $resultado = $consultaAgregarProducto->execute();
-            if ($resultado) {
-                echo "Agregado";
-            }else {
-                echo "Error agregando";
-            }
+            $consultaModificarProducto = $conexionBD->prepare($consultaSQL);
+            $resultado = $consultaModificarProducto->execute();
+            switch ($tipo) {
+                case "agregar":
+                    echo "Producto agregado";
+                    break;
 
+                case "eliminar":
+                    echo "Producto eliminado";
+                    break;
+
+                case "actualizar":
+                    echo "Producto actualizado";
+                    break;
+                
+                default:
+                    echo "Error al guardar o eliminar el producto";
+                    break;
+            }
         }
 
         public function buscarProducto($consultaSQL){
@@ -38,28 +49,6 @@
             $resultado = $consultaBuscarProducto->execute();
             return $consultaBuscarProducto->fetchAll();
 
-        }
-
-        public function eliminarProducto($consultaSQL){
-            $conexionBD = $this->conexion();
-            $consultaEliminarProducto = $conexionBD->prepare($consultaSQL);
-            $resultado = $consultaEliminarProducto->execute();
-            if ($resultado) {
-                echo "Producto eliminado";
-            }else {
-                echo "Error eliminando";
-            }
-        }
-
-        public function actualizarProducto($consultaSQL){
-            $conexionBD = $this->conexion();
-            $consultaActualizarProducto = $conexionBD->prepare($consultaSQL);
-            $resultado = $consultaActualizarProducto->execute();
-            if ($resultado) {
-                echo "Producto actualizado";
-            }else {
-                echo "Error actualizando";
-            }
         }
     }
 

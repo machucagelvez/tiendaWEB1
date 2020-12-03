@@ -1,0 +1,37 @@
+h3{
+    font-family: 'Neucha', cursive;
+    color: rgb(138, 87, 54);
+}
+
+h4{
+    font-family: 'Neucha', cursive;
+    color: rgb(138, 87, 54);
+}
+
+h5{
+    font-family: 'Neucha', cursive;
+    color: rgb(138, 87, 54);
+}
+
+li a{
+    font-size: 25px;
+    font-family: 'Neucha', cursive;
+}
+
+p{
+    font-family: 'Delius', cursive;
+    
+}
+
+a{
+    font-family: 'Delius', cursive;
+    
+}
+
+label{
+    font-family: 'Delius', cursive;
+}
+
+button{
+    font-family: 'Delius', cursive;
+}
