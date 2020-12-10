@@ -14,7 +14,7 @@
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
             <a class="navbar-brand" href="index.html">
-                <img src="https://raw.githubusercontent.com/machucagelvez/imagenesLaMachuca/e50befdbb6f5a29635ba9dd8f14343c7d12d013e/logo.svg" width="100" height="100" alt="" loading="lazy">
+                <img src="https://raw.githubusercontent.com/machucagelvez/imagenesLaMachuca/e50befdbb6f5a29635ba9dd8f14343c7d12d013e/logo.svg" width="90" height="90" alt="logo" loading="lazy">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -35,10 +35,10 @@
           </nav> 
     </header>
 
-    <main>
+    <main class="fondo">
 
         <div class="container">
-            <div class="row justify-content-center mt-2 mb-2">
+            <div class="row justify-content-center mb-2">
                 <h3 class="text-center">Ingrese el producto a registrar:</h3>
             </div>
             <form action="registrarProducto.php" method="POST">
@@ -69,12 +69,12 @@
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">Descripción:</label>
                     <div class="col-sm-10 col-md-4">
-                        <textarea name="descripcion" id="" cols="47" rows="4"></textarea>
+                        <textarea name="descripcion" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-sm-10 col-md-4">
-                        <button type="submit" class="btn btn-info btn-block" name="botonRegistrar">Registrar</button>
+                    <div class="col-sm-10 col-md-2 mb-3">
+                        <button type="submit" class="btn btn-dark btn-block" name="botonRegistrar">Registrar</button>
                     </div>
                 </div>
                 
@@ -84,8 +84,29 @@
 
     </main>
 
-    <footer>
-    
+    <footer class="bg-dark text-light">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-3 text-right mt-2">
+                    <address>
+                        Cerveza Artesanal La Machuca <br>
+                        Todos los derechos reservados <br>
+                        Envigado, 2020
+                    </address>                  
+                </div>
+                <div class="col-12 col-md-3 text-md-left text-right mb-2">
+                    <a href="https://www.instagram.com/lamachucacervezaartesanal/" class="mr-2" target="_blank">
+                        <img src="https://img.icons8.com/fluent/36/000000/instagram-new.png"/>
+                    </a>
+                    <a href="https://www.facebook.com/LaMachucaCerveza/" class="mr-2" target="_blank">
+                        <img src="https://img.icons8.com/material-rounded/36/4a90e2/facebook-circled.png"/>
+                    </a>
+                    <a href="https://twitter.com/fabianmachuca" target="_blank">
+                    <img src="https://img.icons8.com/fluent/36/4a90e2/twitter.png"/>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

@@ -12,9 +12,9 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-warning mb-2">
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
             <a class="navbar-brand" href="index.html">
-                <img src="https://raw.githubusercontent.com/machucagelvez/imagenesLaMachuca/e50befdbb6f5a29635ba9dd8f14343c7d12d013e/logo.svg" width="100" height="100" alt="" loading="lazy">
+                <img src="https://raw.githubusercontent.com/machucagelvez/imagenesLaMachuca/e50befdbb6f5a29635ba9dd8f14343c7d12d013e/logo.svg" width="90" height="90" alt="logo" loading="lazy">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
         </nav> 
     </header>
 
-    <main>
+    <main class="fondo">
     
       <?php
         include("BaseDatos.php");
@@ -43,75 +43,97 @@
         $consultaSQL = "SELECT * FROM producto WHERE 1";
         $productos = $transaccion->buscarProducto($consultaSQL);
         //print_r($productos);
-      ?>
-
-      <?php foreach($productos as $producto): ?>
+      ?>      
 
         <div class="container">
-          
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                      <img src="<?= $producto["imagen"] ?>" class="card-img" alt="imagenProducto">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h4 class="card-title"><?= $producto["nombre"] ?></h4>
-                            <h4 class="card-title">$<?= $producto["precio"] ?></h4>
-                            <p class="card-text"><?= $producto["descripcion"] ?></p>
-                            <!--<p class="card-text"><small class="text-muted">La Machuca</small></p>-->
-                            <a href="borrarProducto.php?id=<?= $producto["idProducto"] ?>" class="btn btn-danger">Eliminar</a>
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar<?= $producto["idProducto"] ?>">Editar</button>
-                            <div class="modal fade" id="editar<?= $producto["idProducto"] ?>" tabindex="-1" aria-labelledby="edicionProducto" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="edicionProducto">Editar Producto</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="actualizarProducto.php?id=<?= $producto["idProducto"] ?>" method="POST">
-                                                <div class="form-group">
-                                                <label>Nombre:</label>
-                                                    <input type="text" class="form-control" name="editarNombre" value="<?= $producto["nombre"]?>">
+            <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+                <?php foreach($productos as $producto): ?>
+                    <div class="card mb-3 mr-2 ml-2 fondoCard" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
+                            <img src="<?= $producto["imagen"] ?>" class="card-img" alt="imagenProducto">
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <h4 class="card-title"><?= $producto["nombre"] ?></h4>
+                                    <h4 class="card-title">$<?= $producto["precio"] ?></h4>
+                                    <p class="card-text"><?= $producto["descripcion"] ?></p>
+                                    <!--<p class="card-text"><small class="text-muted">Marca</small></p>-->
+                                    <a href="borrarProducto.php?id=<?= $producto["idProducto"] ?>" class="btn btn-danger">Eliminar</a>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar<?= $producto["idProducto"] ?>">Editar</button>
+                                    <div class="modal fade" id="editar<?= $producto["idProducto"] ?>" tabindex="-1" aria-labelledby="edicionProducto" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-warning">
+                                                    <h5 class="modal-title font-weight-bold" id="edicionProducto">Editar Producto</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Marca:</label>
-                                                    <input type="text" class="form-control" name="editarMarca" value="<?= $producto["marca"]?>">
+                                                <div class="modal-body fondo">
+                                                    <form action="actualizarProducto.php?id=<?= $producto["idProducto"] ?>" method="POST">
+                                                        <div class="form-group">
+                                                        <label>Nombre:</label>
+                                                            <input type="text" class="form-control" name="editarNombre" value="<?= $producto["nombre"]?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Marca:</label>
+                                                            <input type="text" class="form-control" name="editarMarca" value="<?= $producto["marca"]?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Precio:</label>
+                                                            <input type="number" class="form-control" name="editarPrecio" value="<?= $producto["precio"]?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Imagen:</label>
+                                                            <input type="text" class="form-control" name="editarImagen" value="<?= $producto["imagen"]?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Descripción:</label>
+                                                            <textarea class="form-control" rows="2" name="editarDescripcion"><?= $producto["descripcion"]?></textarea>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-dark" name="botonEditar">Guardar</button>
+                                                    </form>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Precio:</label>
-                                                    <input type="number" class="form-control" name="editarPrecio" value="<?= $producto["precio"]?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Imagen:</label>
-                                                    <input type="text" class="form-control" name="editarImagen" value="<?= $producto["imagen"]?>">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Descripción:</label>
-                                                    <textarea class="form-control" rows="2" name="editarDescripcion"><?= $producto["descripcion"]?></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-info" name="botonEditar">Guardar</button>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>          
+                <?php endforeach ?>      
+            </div>       
         </div>
         
 
-      <?php endforeach ?>
+      
 
     </main>
 
-    <footer>
-    
+    <footer class="bg-dark text-light">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-3 text-right mt-2">
+                    <address>
+                        Cerveza Artesanal La Machuca <br>
+                        Todos los derechos reservados <br>
+                        Envigado, 2020
+                    </address>                  
+                </div>
+                <div class="col-12 col-md-3 text-md-left text-right mb-2">
+                    <a href="https://www.instagram.com/lamachucacervezaartesanal/" class="mr-2" target="_blank">
+                        <img src="https://img.icons8.com/fluent/36/000000/instagram-new.png"/>
+                    </a>
+                    <a href="https://www.facebook.com/LaMachucaCerveza/" class="mr-2" target="_blank">
+                        <img src="https://img.icons8.com/material-rounded/36/4a90e2/facebook-circled.png"/>
+                    </a>
+                    <a href="https://twitter.com/fabianmachuca" target="_blank">
+                    <img src="https://img.icons8.com/fluent/36/4a90e2/twitter.png"/>
+                    </a>
+                </div>
+            </div>
+        </div>    
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
