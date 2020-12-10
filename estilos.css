@@ -18,6 +18,11 @@ li a{
     font-family: 'Neucha', cursive;
 }
 
+ul{
+    list-style-type: none;
+    font-family: 'Delius', cursive; 
+}
+
 p{
     font-family: 'Delius', cursive;
     

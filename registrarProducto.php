@@ -13,7 +13,6 @@
         $consultaSQL = "INSERT INTO producto(nombre, marca, precio, imagen, descripcion) VALUES ('$nombre', '$marca', '$precio', '$imagen', '$descripcion')";
         $transaccion->modificarProducto($consultaSQL, "agregar");
         header("location:index.php");
-
     }  
 
 ?>

@@ -77,8 +77,6 @@
                         <button type="submit" class="btn btn-dark btn-block" name="botonRegistrar">Registrar</button>
                     </div>
                 </div>
-                
-                
             </form>
         </div>
 

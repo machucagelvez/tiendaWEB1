@@ -59,7 +59,32 @@
                                     <h4 class="card-title">$<?= $producto["precio"] ?></h4>
                                     <p class="card-text"><?= $producto["descripcion"] ?></p>
                                     <!--<p class="card-text"><small class="text-muted">Marca</small></p>-->
-                                    <a href="borrarProducto.php?id=<?= $producto["idProducto"] ?>" class="btn btn-danger">Eliminar</a>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar<?= $producto["idProducto"] ?>">Eliminar</button>
+                                    <div class="modal fade" id="eliminar<?= $producto["idProducto"] ?>" tabindex="-1" aria-labelledby="eliminarProducto" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-warning">
+                                                    <h5 class="modal-title font-weight-bold" id="eliminarProducto">Eliminar Producto</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body fondo">
+                                                    <p>Se va a eliminar el siguiente producto:</p>
+                                                    <ul>
+                                                        <li><strong>Nombre:</strong> <?= $producto["nombre"] ?></li>
+                                                        <li><strong>Precio:</strong> $<?= $producto["precio"] ?></li>
+                                                        <li><strong>Descripción:</strong> <?= $producto["descripcion"] ?></li>                                                        
+                                                    </ul>
+                                                </div>
+                                                <div class="modal-footer bg-dark">
+                                                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                                    <a href="borrarProducto.php?id=<?= $producto["idProducto"] ?>" class="btn btn-outline-success">Aceptar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar<?= $producto["idProducto"] ?>">Editar</button>
                                     <div class="modal fade" id="editar<?= $producto["idProducto"] ?>" tabindex="-1" aria-labelledby="edicionProducto" aria-hidden="true">
                                         <div class="modal-dialog">
